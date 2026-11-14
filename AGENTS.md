@@ -21,6 +21,9 @@ Instructions for AI assistants working with this repository.
    - `store`: Starfield's Microsoft Store place for each week, or null when there's no figure.
    - `storeNote`: a note for weeks with no store figure.
    - `sub`: a one-line summary for each game.
+   - `hue`: code to the game's colour hue (0-360), used on every chart and table. Starfield is always blue (235).
+   - `alt`: code to true when the game's colour uses a deeper shade of its hue, to tell it apart from a nearby hue.
+   - `events`: Starfield releases marked as dashed lines on the charts that cover their date, each with `date` (YYYY-MM-DD) and `label`.
 6. **Common tasks:**
    - Get one game's ranks: load the JSON as in step 4, then read `d['ranks']['Starfield']`, using the codes in `d['names']`.
    - Work out a score: a game placed r earns `41 - r` points that week, and 0 when outside the top 40. The total is the sum over weeks. Points per week divides the total by the weeks with `ta` true on or after the game's first playable date on Xbox.
