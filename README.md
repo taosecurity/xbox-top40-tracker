@@ -25,6 +25,6 @@ For AI assistants: see [AGENTS.md](AGENTS.md).
   - Both are typed in by hand each week.
 - This is an unofficial page, not made or endorsed by TrueAchievements, Microsoft or any game's publisher.
 - The page's "About this data" section lists known gaps, such as missing weeks and weeks with no chart.
-- Found a mistake? [Open an issue](https://github.com/taosecurity/xbox-top40-tracker/issues).
+- If you find a mistake, please [open an issue](https://github.com/taosecurity/xbox-top40-tracker/issues).
 
 The page is a single self-contained `index.html` with no external dependencies, and all its data is built in. Its code (layout and charts) is MIT licensed; see `LICENSE`.
