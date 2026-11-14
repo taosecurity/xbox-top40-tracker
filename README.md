@@ -9,7 +9,7 @@ This page shows how Starfield and ten other big RPG and open-world games have pl
   - Total points, scored the track-meet way: 40 points for 1st place down to 1 point for 40th, added up week by week.
   - Points per week since each game came out on Xbox, which is fair to games released during the tracking period.
   - Weeks in the top 40, best rank, average rank and the last 12 weeks.
-- **Charts:** a rank-over-time chart where you pick one or more games to highlight, one small chart per game, and points by year. Each game keeps one colour throughout the page, and Starfield is always blue. Dashed lines mark the releases of Shattered Space and of Free Lanes with Terran Armada.
+- **Charts:** a rank-over-time chart where you pick one or more games to highlight, one small chart per game, and points by year. Each game keeps one color throughout the page, and Starfield is always blue. Dashed lines mark the releases of Shattered Space and of Free Lanes with Terran Armada.
 - **Microsoft Store:** Starfield's place on the store's "most popular" list, shown separately and never added to the points.
 - **Every week:** a table of each week's ranks, linked to that week's TrueAchievements article.
 
