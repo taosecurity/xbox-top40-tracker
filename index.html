@@ -180,7 +180,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
 </nav>
 <main>
 <header id="top">
-<p class="eyebrow">167 weeks &middot; 2023-09-03 to 2026-11-16 &middot; 11 games &middot; built 2026-11-20 13:10 UTC</p>
+<p class="eyebrow">167 weeks &middot; 2023-09-03 to 2026-11-16 &middot; 11 games &middot; built 2026-11-21 21:52 UTC</p>
 <h1>Xbox Top 40 Tracker</h1>
 <p class="lede">This page shows how Starfield and ten other big RPG and open-world games place each week in the TrueAchievements Xbox top 40. It charts each game's rank, its score over time and how it compares with the others. Starfield's place on the Microsoft Store "most popular" list is tracked alongside.</p>
 <p class="byline">By <a href="https://github.com/taosecurity" target="_blank" rel="noopener">Richard Bejtlich</a>, <a href="https://www.youtube.com/@RichardBejtlich" target="_blank" rel="noopener">Richard Presents Starfield Essentials</a> on YouTube</p>
@@ -287,6 +287,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
   var NS = 'http://www.w3.org/2000/svg';
   var sel = {}; sel[D.order[0]] = true;   /* games highlighted on the main chart */
   function col(c) { return 'hsl(' + D.hue[c] + ' 60% var(--' + (D.alt[c] ? 'line-l2' : 'line-l') + '))'; }
+  /* names and notes from the CSVs go into tooltip HTML, so escape them (review 2026-11-21) */
+  function escH(s) { return String(s).replace(/[&<>"']/g, function (ch) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[ch]; }); }
   function sw(c) { return '<i class="sw" style="background:' + col(c) + '"></i>'; }
   function el(name, attrs, parent) {
     var e = document.createElementNS(NS, name);
@@ -324,7 +326,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       }
     });
     if (opt.noData) opt.noData.forEach(function (ok, i) {
-      if (!ok) el('rect', {x: x(i) - iw / n / 2, y: m.t, width: Math.max(2, iw / n), height: ih, fill: 'var(--panel2)'}, svg);
+      var step = n > 1 ? iw / (n - 1) : iw;   /* the spacing of the weekly points */
+      if (!ok) el('rect', {x: x(i) - step / 2, y: m.t, width: Math.max(2, step), height: ih, fill: 'var(--panel2)'}, svg);
     });
     /* release markers: a dashed line at the release day (placed between the weekly points) and a label above the plot */
     (opt.events || []).forEach(function (ev) {
@@ -385,7 +388,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
     rows.forEach(function (p) {
       var on = !only && sel[p[0]];
       h += '<div class="row' + (on ? ' hl' : '') + '"' + (on ? ' style="color:' + col(p[0]) + '"' : '') + '><span>' + sw(p[0]) +
-        D.names[p[0]] + '</span><span>#' + p[1] + '</span></div>';
+        escH(D.names[p[0]]) + '</span><span>#' + p[1] + '</span></div>';
     });
     return h;
   }
@@ -450,7 +453,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line)
       tip: function (i) {
         var v = store[i];
         return '<b>Week of ' + label(weeks[i]) + '</b><div class="row hl" style="color:' + col('Starfield') + '"><span>' + sw('Starfield') + 'Starfield</span><span>' +
-          (v != null ? '#' + v : 'no figure') + '</span></div>' + (v == null && notes[i] ? '<div>' + notes[i] + '</div>' : '');
+          (v != null ? '#' + v : 'no figure') + '</span></div>' + (v == null && notes[i] ? '<div>' + escH(notes[i]) + '</div>' : '');
       }
     });
   }
